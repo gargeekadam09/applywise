@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Theme Variables */
+:root[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: rgba(255, 255, 255, 0.05);
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --input-bg: rgba(0, 0, 0, 0.4);
+  --input-border: #374151;
+  --sheet-bg: linear-gradient(to bottom, #111827, #000000);
+  --sheet-header-bg: rgba(17, 24, 39, 0.95);
+}
+
+:root[data-theme="light"] {
+  --bg-primary: #f1f5f9;
+  --bg-secondary: rgba(0, 0, 0, 0.03);
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --text-primary: #0f172a;
+  --text-secondary: #6b7280;
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: #d1d5db;
+  --sheet-bg: linear-gradient(to bottom, #f8fafc, #f1f5f9);
+  --sheet-header-bg: rgba(248, 250, 252, 0.95);
+}
+
+/* Apply theme colors */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme-aware utility classes */
+.theme-bg { background-color: var(--bg-primary); }
+.theme-card { background-color: var(--bg-card); border-color: var(--border-color); }
+.theme-text { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+.theme-label { color: var(--text-secondary); }
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.animate-slide-up { animation: slide-up 0.3s ease-out; }
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-down { animation: slide-down 0.3s ease-out; }
