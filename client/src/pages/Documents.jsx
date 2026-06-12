@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import toast from "react-hot-toast";
+import API_BASE from "../config";
 
 function Documents() {
   const [documents, setDocuments] = useState([]);
@@ -17,7 +18,7 @@ function Documents() {
   const fetchDocuments = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5000/api/documents", {
+      const response = await axios.get(`${API_BASE}/api/documents`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDocuments(response.data);
@@ -51,7 +52,7 @@ function Documents() {
       formData.append("type", uploadType);
 
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:5000/api/documents/upload", formData, {
+      await axios.post(`${API_BASE}/api/documents/upload`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -74,7 +75,7 @@ function Documents() {
     if (!window.confirm("Are you sure you want to delete this document?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/documents/${id}`, {
+      await axios.delete(`${API_BASE}/api/documents/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Document deleted.");
@@ -180,7 +181,7 @@ function Documents() {
                 </p>
                 <div className="flex gap-3">
                   <a
-                    href={`http://localhost:5000/uploads/${doc.filename}`}
+                    href={`${API_BASE}/uploads/${doc.filename}`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm transition-all duration-300"
@@ -223,7 +224,7 @@ function Documents() {
                 </p>
                 <div className="flex gap-3">
                   <a
-                    href={`http://localhost:5000/uploads/${doc.filename}`}
+                    href={`${API_BASE}/uploads/${doc.filename}`}
                     target="_blank"
                     rel="noreferrer"
                     className="flex-1 text-center bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-xl text-sm transition-all duration-300"

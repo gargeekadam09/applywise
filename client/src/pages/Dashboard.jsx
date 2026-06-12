@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import KanbanBoard from "../components/KanbanBoard";
 import SearchAndFilter from "../components/SearchAndFilter";
 import toast from "react-hot-toast";
+import API_BASE from "../config";
 import {
   PieChart,
   Pie,
@@ -335,7 +336,7 @@ const getStatusColor = (status) => {
                       <div className="mt-3 flex flex-wrap gap-2">
                         {job.resumeUsed && (
                           <a
-                            href={`http://localhost:5000/uploads/${job.resumeUsed.filename}`}
+                            href={`${API_BASE}/uploads/${job.resumeUsed.filename}`}
                             target="_blank"
                             rel="noreferrer"
                             className="text-xs bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full hover:bg-blue-500/30 transition-all"
@@ -345,7 +346,7 @@ const getStatusColor = (status) => {
                         )}
                         {job.coverLetterUsed && (
                           <a
-                            href={`http://localhost:5000/uploads/${job.coverLetterUsed.filename}`}
+                            href={`${API_BASE}/uploads/${job.coverLetterUsed.filename}`}
                             target="_blank"
                             rel="noreferrer"
                             className="text-xs bg-purple-500/20 text-purple-300 px-3 py-1 rounded-full hover:bg-purple-500/30 transition-all"

@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import { getJobById, updateJob } from "../services/jobService";
 import axios from "axios";
 import toast from "react-hot-toast";
+import API_BASE from "../config";
 
 function EditJob() {
   const { id } = useParams();
@@ -37,7 +38,7 @@ function EditJob() {
         // Fetch job and documents in parallel
         const [job, docsRes] = await Promise.all([
           getJobById(id),
-          axios.get("http://localhost:5000/api/documents", {
+          axios.get(`${API_BASE}/api/documents`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);

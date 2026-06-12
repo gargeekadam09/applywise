@@ -1,6 +1,7 @@
 import axios from "axios";
+import API_BASE from "../config";
 
-const API = "http://localhost:5000/api/jobs";
+const API = `${API_BASE}/api/jobs`;
 
 const getToken = () => localStorage.getItem("token");
 

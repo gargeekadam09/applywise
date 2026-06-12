@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import API_BASE from "../config";
 
 function Profile() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function Profile() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        "http://localhost:5000/api/auth/profile",
+        `${API_BASE}/api/auth/profile`,
         { name },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -43,7 +44,7 @@ function Profile() {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        "http://localhost:5000/api/auth/profile",
+        `${API_BASE}/api/auth/profile`,
         { currentPassword, newPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );

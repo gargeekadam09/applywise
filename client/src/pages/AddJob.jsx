@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import toast from "react-hot-toast";
+import API_BASE from "../config";
 
 function AddJob() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function AddJob() {
     const fetchDocuments = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/documents", {
+        const res = await axios.get(`${API_BASE}/api/documents`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setResumes(res.data.filter((d) => d.type === "resume"));
